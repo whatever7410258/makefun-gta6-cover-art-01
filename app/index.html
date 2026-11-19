@@ -3,20 +3,51 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cover Snap</title>
+<title>Cover Snap — GTA-style cover art maker</title>
 <link rel="stylesheet" href="./style.css">
 </head>
 <body>
 <main class="app">
-  <section class="controls">
-    <h1>Cover Snap</h1>
-    <p>A photo and a caption, made into a square cover.</p>
-    <label>Photo <input id="photo" type="file" accept="image/*"></label>
-    <label>Caption <input id="caption" type="text" maxlength="40" value="Sunset Heist"></label>
-    <button id="export" type="button">Export PNG 1080 x 1080</button>
+  <section class="controls" aria-label="Cover controls">
+    <header>
+      <h1>Cover Snap</h1>
+      <p>Your photo + a caption = a Vice City sunset poster. Three steps: pick photos, pick a look, export the PNG.</p>
+    </header>
+
+    <div id="photo-slots" class="photo-slots"></div>
+
+    <fieldset>
+      <legend>Panels</legend>
+      <div id="layout-row" class="choice-row"></div>
+      <div id="panel-pickers" class="panel-pickers"></div>
+      <button id="fill-all" type="button" class="chip">Fill every panel with Photo 1</button>
+      <p class="hint">Tip: drag a photo on the preview to slide it inside its panel.</p>
+    </fieldset>
+
+    <fieldset>
+      <legend>Look</legend>
+      <div id="grade-row" class="choice-row"></div>
+      <div id="style-row" class="choice-row"></div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Words</legend>
+      <label>Caption <input id="caption" type="text" maxlength="40" value="Sunset Heist"></label>
+      <label>Sub-caption <input id="subcaption" type="text" maxlength="60" value="One last job under the palms"></label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Export size</legend>
+      <div id="size-row" class="choice-row"></div>
+    </fieldset>
+
+    <button id="export" type="button" class="export">Export PNG 1920 x 1080</button>
     <p id="status" role="status"></p>
+    <p class="privacy">Photos are read on your machine and never uploaded. Works fully offline.</p>
   </section>
-  <canvas id="cover" width="1080" height="1080" aria-label="The cover"></canvas>
+  <section class="preview" aria-label="Cover preview">
+    <canvas id="cover" width="1920" height="1080" aria-label="The cover"></canvas>
+  </section>
 </main>
 <script type="module" src="./src/main.js"></script>
 </body>
